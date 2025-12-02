@@ -14,7 +14,7 @@ using namespace mllm;
 namespace v2 {
 
 // NPU QKV part
-class QwenDecoderNPUPart1 : public Module {
+class QwenDecoderNPUPart1 : public Module {// Module.cpp中的Module父类
 protected:
     int hidden_size;
     int num_heads;
@@ -660,7 +660,7 @@ private:
     Layer norm;
 };
 
-class QWenForCausalLM_NPU final : public Module {
+class QWenForCausalLM_NPU final : public Module {// demo_qwen_npu所用 prefill模型
     std::set<int> &shadowLayer;
 
 public:

@@ -96,7 +96,7 @@ void QNNBackend::registerOps() {
 }
 
 QNNBackend::QNNBackend(shared_ptr<MemoryManager> mm) :
-    Backend(mm) {
+    Backend(mm)/* 注册内存*/ {   
     type_ = BackendType::MLLM_QNN; // used in Tensor.device()
 
     QnnLog_Level_t qnnLogLevel = QNN_LOG_LEVEL_WARN; // QNN_LOG_LEVEL_INFO; // QNN_LOG_LEVEL_WARN; // default QNN log level

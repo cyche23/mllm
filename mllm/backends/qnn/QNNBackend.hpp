@@ -162,7 +162,7 @@ private:
     void registerOps() override;
     void registerFuncs() override{};
 
-    void extractBackendProfilingInfo(Qnn_ProfileHandle_t profileHandle);
+    void extractBackendProfilingInfo(Qnn_ProfileHandle_t profileHandle);// extract：提取
 
     void extractProfilingSubEvents(QnnProfile_EventId_t profileEventId);
 

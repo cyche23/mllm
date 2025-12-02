@@ -60,7 +60,41 @@ class Module;
  *        then the size of SEQUENCE dimension of the first Tensor is 2, the size of SEQUENCE dimension of the second Tensor is 1.
  *
  */
-
+/* Tensor是mllm的基本数据结构。它用于存储模型的权重和激活值（计算的中间数据）。
+ * Tensor类包含3种类型的张量：BasicTensor、ChildTensor、AggregatedTensor。
+ *
+ * I）这些是张量的一些基本属性：
+ * - 张量的数据存储在以'host_ptr_'开头的主机内存中。
+ * - 张量的形状存储在'shape_'中，它是一个整数向量，依赖于私有变量'ctype_'。例如：4维张量的形状为[2, 3, 4, 5]。
+ * - 私有变量'ctype_'表示内存中维度的顺序。
+ *   例如：ctype_ == BSHD，内存中维度的顺序是：batch, sequence, head, dimension。
+ *        ctype_ == BHDS，内存中维度的顺序是：batch, head, dimension, sequence。
+ *        ctype_ == BCTHW，内存中维度的顺序是：batch, channel, time, height, width，用于5维张量。
+ * - 张量的数据类型是'dtype_'，可以是MLLM_TYPE_FP32、MLLM_TYPE_FP16、MLLM_TYPE_Q4_K等。
+ * - 私有变量'transed_'表示张量是否已被转置。请参见下面的[transShape](file://e:\codes\mllm\mllm\Tensor.hpp#L706-L769)方法了解更多信息。
+ *   例如：原始张量的ctype_ == BSHD，transed_ == false，
+ *        转置后的张量ctype_ == BHDS，transed_ == true。
+ *
+ * II）这些是用于ChildTensor的属性：
+ * ChildTensor是另一个张量（称为'MasterTensor'）的一部分，ChildTensor的'host_ptr_'与MasterTensor的'host_ptr_'相同。
+ * 每个ChildTensor只有一个MasterTensor，但每个MasterTensor可以有多个ChildTensor。
+ * - 私有变量'shape_master_'表示MasterTensor的形状。
+ * - 私有变量'master_tensor_'表示ChildTensor的MasterTensor。
+ * - 私有变量'shape_offset_'表示ChildTensor相对于MasterTensor的每个维度的偏移量。
+ *   例如：MasterTensor的形状是[2, 3, 4, 5]，ChildTensor的形状是[1, 2, 3, 4]，则shape_offset_ = [1, 0, 0, 0]。
+ * - 私有变量'child_tensors_'表示MasterTensor的ChildTensor。
+ * - 私有变量'undiffusion_'表示ChildTensor的'transed_'是否可以扩散到其MasterTensor。
+ *
+ * III）这些是用于AggregatedTensor的属性：
+ * AggregatedTensor是多个张量的聚合。
+ * AggregatedTensor的'host_ptr_'为NULL且不使用。
+ * - 私有变量'aggregated_tensors_'表示被AggregatedTensor聚合的张量。
+ * - 私有变量'aggregated_dim_'表示AggregatedTensor的维度。例如：HEAD, SEQUENCE, DIMENSION。
+ * - 私有变量'aggregated_dims_'表示每个张量的每个维度的总大小。
+ *   例如：aggregated_dim_ = SEQUENCE；aggregated_dims_ = [2, 3]；
+ *        则第一个张量的SEQUENCE维度大小为2，第二个张量的SEQUENCE维度大小为1。
+ *
+ */
 class QuantParam {
 public:
     QuantParam() :
