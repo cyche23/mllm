@@ -1,0 +1,2 @@
+11/10 mllm 版本：首先源项目的makefile给放在了../目录下，参考原先的版本，需要先放进当前目录下执行make
+其次，不知为何在QNN 的多个头文件中都引入了infinite float，但编译flags中仍添加-ffast_math，这里跟我第一次部署遇到的情况一样，说明可能是我的环境问题导致的。需要在相应的编译flags后添加-Wno-nan-infinity-disabled允许这一操作才能编译完成，记录一下以便遇到问题。
