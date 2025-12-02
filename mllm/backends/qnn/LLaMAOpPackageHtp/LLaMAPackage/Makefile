@@ -100,6 +100,9 @@ OP_INCLUDES =  #$(wildcard $(OP_INCLUDE_DIR)/*.h) user defined if any op specifi
 LIBRARY_NAME := libQnn$(PACKAGE_NAME).so
 SUPPORTED_TARGETS = x86_64-linux-clang hexagon-v68 hexagon-v69 hexagon-v73 hexagon-v75 aarch64-android
 
+$(info "INFO: node 1 success")
+
+
 INCLUDES = $(addprefix -I,$(QHL_INC_DIRS)) $(addprefix -I,$(QHL_HVX_INC_DIRS)) $(addprefix -I,$(WORKER_POOL_INC)) -I$(HEXAGON_SDK_ROOT)/libs/qhl_hvx/inc/qhmath_hvx/ -I$(HEXAGON_SDK_ROOT)/libs/qhl_hvx/inc/internal
 
 
@@ -171,7 +174,7 @@ all: htp_v68 htp_x86 htp_aarch64
 # Setup compiler, compiler instructions and linker for x86
 X86_CXX ?= clang++
 X86_LDFLAGS:= -Wl,--whole-archive -L$(X86_LIBNATIVE_RELEASE_DIR)/libnative/lib -lnative -Wl,--no-whole-archive -lpthread
-X86_C_FLAGS := -D__HVXDBL__ -I$(X86_LIBNATIVE_RELEASE_DIR)/libnative/include -ffast-math -DUSE_OS_LINUX
+X86_C_FLAGS := -D__HVXDBL__ -I$(X86_LIBNATIVE_RELEASE_DIR)/libnative/include -ffast-math -DUSE_OS_LINUX -Wno-nan-infinity-disabled
 X86_CXX_FLAGS = $(COMMON_CXX_FLAGS) $(X86_C_FLAGS) -fomit-frame-pointer -Wno-invalid-offsetof
 linux_objs =
 #============================================================================================================
@@ -193,7 +196,7 @@ HEX_LDFLAGS =
 hexagon_objs =
 #============================================================================================================
 # Setup compiler, compiler instructions and linker for aarch64
-AARCH64_C__FLAGS = -D__HVXDBL__ -I$(X86_LIBNATIVE_RELEASE_DIR)/libnative/include -ffast-math -DUSE_OS_LINUX -DANDROID
+AARCH64_C__FLAGS = -D__HVXDBL__ -I$(X86_LIBNATIVE_RELEASE_DIR)/libnative/include -ffast-math -DUSE_OS_LINUX -DANDROID -Wno-nan-infinity-disabled
 AARCH64_CXX_FLAGS = $(COMMON_CXX_FLAGS) $(AARCH64_C__FLAGS) -fomit-frame-pointer -Wno-invalid-offsetof  -Wno-unused-variable -Wno-unused-parameter -Wno-missing-braces -Wno-sign-compare -Wno-unused-private-field -Wno-unused-variable -Wno-ignored-qualifiers -Wno-missing-field-initializers
 ARM_CLANG_OPTS =--target=aarch64-none-linux-android21 --sysroot=$(ANDROID_NDK_ROOT)/toolchains/llvm/prebuilt/linux-x86_64/sysroot -stdlib=libc++ -static-libstdc++
 AARCH64_CXX = $(ANDROID_NDK_ROOT)/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ $(ARM_CLANG_OPTS)
@@ -226,6 +229,7 @@ HEXAGON_BUILD_V75:  $(WORK)/hexagon-v75/$(LIBRARY_NAME)
 
 X86_BUILD: $(WORK)/x86_64-linux-clang/$(LIBRARY_NAME)
 
+$(info "INFO: node 2 success")
 
 define build_objs =
 ifneq ($(filter $(2),$(SUPPORTED_TARGETS)),)
@@ -309,6 +313,9 @@ $(WORK)/hexagon-v73/ops/%.o: $(OP_SRC_DIR)/v73_asm/%.S | $(WORK)/hexagon-v73
 $(WORK)/hexagon-v73/$(LIBRARY_NAME): $(hexagon-v73_objs) | $(HFILES)
 	$(HEXAGON_CXX_V73) -fPIC -std=c++17 -g -shared -o $@ $^ $(HEX_LDFLAGS) $(WORKER_POOL_LIB)
 
+$(info "INFO: node 3 success")
+
+
 #v75
 $(WORK)/hexagon-v75/%.o: $(SRC_DIR)/%.cpp | $(WORK)/hexagon-v75
 	$(HEXAGON_CXX_V75) $(HEXAGON_CXX_FLAGS_V75) -DTHIS_PKG_NAME=$(PACKAGE_NAME) -MMD -c $< -o $@
@@ -337,6 +344,9 @@ $(WORK)/aarch64-android/$(LIBRARY_NAME): $(aarch64-android_objs) | $(HFILES)
 
 clean:
 	-rm -rf $(WORK)
+
+$(info "INFO: node 4 success")
+
 
 .PHONY: all clean
 

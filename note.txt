@@ -1,0 +1,1 @@
+修改bin_arm_qnn中的demo文件：删除对应执行文件后，在scripts目录下./build_qnn_android.sh

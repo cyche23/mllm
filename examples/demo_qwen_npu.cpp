@@ -13,11 +13,11 @@ using namespace mllm;
 
 int main(int argc, char **argv) {
     cmdline::parser cmdParser;
-    cmdParser.add<string>("vocab", 'v', "specify mllm tokenizer model path", false, "../vocab/qwen2.5_vocab.mllm");
-    cmdParser.add<string>("merge", 'e', "specify mllm merge file path", false, "../vocab/qwen2.5_merges.txt");
-    cmdParser.add<string>("qnn-model", 'm', "specify mllm model path", false, "../models/Qwen2.5-1.5B-Instruct_rotated-noshadow.mllm");
-    cmdParser.add<string>("decoding-model", '\0', "specify mllm model path", false, "../models/Qwen2.5-1.5B-Instruct_rotated-Q40.mllm");
-    cmdParser.add<string>("billion", 'b', "[0.5B | 1.8B | 1.5B | [1.5B, 1.8B]-rotated]", false, "1.5B-rotated");
+    cmdParser.add<string>("vocab", 'v', "specify mllm tokenizer model path", false, "../vocab/qwen_vocab.mllm");
+    cmdParser.add<string>("merge", 'e', "specify mllm merge file path", false, "../vocab/qwen_merges.txt");
+    cmdParser.add<string>("qnn-model", 'm', "specify mllm model path", false, "../models/qwen-1.5-1.8b-chat-int8.mllm");
+    cmdParser.add<string>("decoding-model", '\0', "specify mllm model path", false, "../models/qwen-1.5-1.8b-chat-q4k.mllm");
+    cmdParser.add<string>("billion", 'b', "[0.5B | 1.8B | 1.5B | [1.5B, 1.8B]-rotated]", false, "1.8B");
     cmdParser.add<int>("limits", 'l', "max KV cache size", false, 400);
     cmdParser.add<int>("thread", 't', "num of threads", false, 4);
     cmdParser.parse_check(argc, argv);
@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
     Module::initBackend(MLLM_QNN);
 
     auto tokenizer = QWenTokenizer(vocab_path, merge_path);
-    QWenNPUConfig config(tokens_limit, "1.5b-rotated", RoPEType::HFHUBROPE);
+    QWenNPUConfig config(tokens_limit, model_billion, RoPEType::HFHUBROPE);
     auto model = v2::QWenForCausalLM_NPU(config, 256);
     config.attn_implementation = "eager_notrans";
     model.load(model_path);
