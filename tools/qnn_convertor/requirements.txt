@@ -1,0 +1,6 @@
+datasets==4.4.1
+numpy==2.3.5
+Pillow==12.0.0
+torch==2.9.1
+tqdm==4.67.1
+transformers==4.57.3

@@ -260,7 +260,7 @@ struct QWenNPUConfig : virtual public QWenConfig {
         string billionsType;
         std::transform(billions.begin(), billions.end(), std::back_inserter(billionsType),
                        ::tolower);
-        if (billionsType == "1.8b") {
+        if (billionsType == "1.8b") {// 当前mllm不使用INT8类型的bias，全部改为使用dequantize add的方式，也就是不支持早期的W8A8模型了。这里需要使用1.8b-rotated配置
             shadow_layers = {1, 2, 26};
         } else if (billionsType == "1.8b-rotated") {
             shadow_layers = {};
