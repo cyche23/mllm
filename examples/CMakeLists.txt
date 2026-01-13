@@ -78,7 +78,6 @@ macro(func_vlm_add_executable target)
     endif()
 endmacro()
 
-func_llm_add_executable(test)
 func_llm_add_executable(mllm_benchmark)
 func_llm_add_executable(demo_llama)
 func_llm_add_executable(demo_tinyllama)
@@ -132,6 +131,8 @@ if(QNN)
     func_llm_add_executable(demo_qwen_npu)
     # func_llm_add_executable(demo_qwen_npu_pipeline)
     func_vlm_add_executable(demo_qwen2_vl_npu)
+    func_llm_add_executable(mllm_test)
+    func_llm_add_executable(mllm_test_layer)
 endif()
 
 

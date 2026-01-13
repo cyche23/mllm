@@ -1,14 +1,14 @@
 {
     "profile_config": {
-        "dataset_path": "path/to/pile-val-backup/",
+        "dataset_path": "/home/dcy/mllm/models/Qwen1.5-1.8B-Chat/data.txt",
         "output_path": "./dis/qwen1.5-1.8b-rot-dis.json",
         "num_samples": 2,
         "no_bias": true,
 
         "model_config": {
             "model_type": "qwen2",
-            "tokenizer_name": "path/to/Qwen1.5-1.8B-Chat",
-            "model_name": "path/to/Qwen1.5-1.8B-Chat",
+            "tokenizer_name": "/home/dcy/mllm/models/Qwen1.5-1.8B-Chat",
+            "model_name": "/home/dcy/mllm/models/Qwen1.5-1.8B-Chat",
 
             "online_rotation": true,
             "random_rotate": true,
@@ -24,8 +24,8 @@
 
         "model_config": {
             "model_type": "qwen2",
-            "tokenizer_name": "path/to/Qwen1.5-1.8B-Chat",
-            "model_name": "path/to/Qwen1.5-1.8B-Chat",
+            "tokenizer_name": "/home/dcy/mllm/models/Qwen1.5-1.8B-Chat",
+            "model_name": "/home/dcy/mllm/models/Qwen1.5-1.8B-Chat",
 
             "online_rotation": true,
             "R_path": "./R/qwen1.5-1.8b-rotation-matrix.bin"

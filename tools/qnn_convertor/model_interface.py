@@ -203,7 +203,7 @@ class QwenModelInterface(ModelInterface):
         self.model = AutoModelForCausalLM.from_pretrained(
             self.model_name,
             torch_dtype=torch.float32,
-            device_map="auto")
+            device_map="cpu")
         self.model.eval()
         if getattr(self.args, 'online_rotation', False):
             print("Online rotation enabled")

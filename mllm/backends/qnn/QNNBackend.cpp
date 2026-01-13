@@ -216,7 +216,12 @@ void QNNBackend::onSetUpStart(vector<shared_ptr<Tensor>> &inputs, vector<shared_
     slcConfig.option = QNN_GRAPH_CONFIG_OPTION_CUSTOM;
     slcConfig.customConfig = &slcConfigInfo;
 
-    const QnnGraph_Config_t *graphConfigList[] = {&vtcmConfig, &slcConfig, NULL};
+    // const QnnGraph_Config_t *graphConfigList[] = {&vtcmConfig, &slcConfig, NULL};
+    
+    //Note: SLC allocator option can be unsupported on some targets/contexts and
+    // may trigger "setSlcAllocator: can't enable option as it was not set on prepare".
+    // Only pass VTCM config by default to avoid enabling SLC allocator unconditionally.
+    const QnnGraph_Config_t *graphConfigList[] = {&vtcmConfig, NULL};
 
     ModelError_t err = MODEL_NO_ERROR;
     if ((err = qnnModels_[qnnModelIndex_].initialize(mRuntime->backendHandle,
