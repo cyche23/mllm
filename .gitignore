@@ -40,3 +40,9 @@ autotuner.log
 /models/
 # Keep source model adapters tracked
 !tools/mllm-llm-benchmark/models/
+
+# Specific files to ignore
+qwen3-1.7B-lpbq-sha.bin
+qwen3_qnn_aot_sha_32.mir
+qwen3_qnn_aot_sha_1.mir
+logs/
