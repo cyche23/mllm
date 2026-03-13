@@ -35,6 +35,10 @@ QNNBackend::QNNBackend() : Backend(kQNN, createQNNAllocator()) {
   QnnLog_Level_t qnnLogLevel = QNN_LOG_LEVEL_ERROR;  // default QNN log level
   profilingLevel_ = ProfilingLevel::OFF;
   debug_ = false;  // when set true, NATIVE tensor will be regared as APP_READ tensor
+  
+  // QnnLog_Level_t qnnLogLevel = QNN_LOG_LEVEL_VERBOSE;  // default QNN log level
+  // profilingLevel_ = ProfilingLevel::DETAILED;
+  // debug_ = true;  // when set true, NATIVE tensor will be regared as APP_READ tensor
 
   // Load QNN libraries and hold handles for lifecycle management
   auto [qnnSuccess, qnnHandle] = loadQNNSymbol();

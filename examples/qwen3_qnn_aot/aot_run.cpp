@@ -15,6 +15,9 @@ MLLM_MAIN({
   auto& tokenizer_path = Argparse::add<std::string>("-t|--tokenizer").help("Tokenizer path").def("tokenizer.json");
   auto& config_path = Argparse::add<std::string>("-c|--config").help("Config path").required(true);
   auto& ar_len = Argparse::add<int>("--ar_len").help("Autoregressive length (chunk size)").def(128);
+  auto& gen_len =
+      Argparse::add<int>("--gen_len").help("Decode token length used for generation and performance stats").def(32);
+  auto& perf = Argparse::add<bool>("--perf").help("Print prefill/decode performance summary");
 
   Argparse::parse(argc, argv);
 
@@ -49,8 +52,8 @@ MLLM_MAIN({
     return 1;
   }
 
-  runner.generate(input_tensor["sequence"], config.context_len,
-                  [](const std::string& token) { std::cout << token << std::flush; });
+  runner.generate(input_tensor["sequence"], gen_len.get(), [](const std::string& token) { std::cout << token << std::flush; },
+                  perf.get());
   std::cout << "\n";
 
   return 0;

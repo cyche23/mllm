@@ -1,0 +1,5 @@
+23117RK66C
+manet
+16
+manet
+Linux localhost 6.1.118-android14-11-gca0ef6d17716-ab13624819 #1 SMP PREEMPT Tue Jun 10 18:59:08 UTC 2025 aarch64 Toybox

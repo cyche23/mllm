@@ -1,0 +1,147 @@
+[  0%] Built target stdexec
+[  0%] Built target xxhash_impl
+[  2%] Built target xxhash_static
+[  4%] Built target flatbuffers
+[  6%] Built target hwy
+[ 70%] Built target MllmRT
+[ 70%] Building CXX object mllm/backends/cpu/CMakeFiles/MllmCPUBackend.dir/ops/RMSNormOp.cpp.o
+[ 70%] Building CXX object mllm/backends/cpu/CMakeFiles/MllmCPUBackend.dir/ops/PagedAttnOp.cpp.o
+[ 70%] Building CXX object mllm/backends/cpu/CMakeFiles/MllmCPUBackend.dir/ops/RadixAttnDiffDimOp.cpp.o
+[ 70%] Building CXX object mllm/backends/cpu/CMakeFiles/MllmCPUBackend.dir/ops/RadixAttnOp.cpp.o
+In file included from /root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:7,
+                 from /root/codes/mllm-v2/mllm/backends/cpu/ops/PagedAttnOp.cpp:8:
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp: In lambda function:
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:84:13: error: ‘__m128’ was not declared in this scope
+   84 |             __m128 acc = _mm_setzero_ps();
+      |             ^~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:101:22: error: expected ‘;’ before ‘weight_vec’
+  101 |               __m128 weight_vec = _mm_set1_ps(weight);
+      |                      ^~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:102:22: error: expected ‘;’ before ‘v_vec’
+  102 |               __m128 v_vec = _mm_load_ps(v_ptr);
+      |                      ^~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:15: error: ‘acc’ was not declared in this scope; did you mean ‘acct’?
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |               ^~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:48: error: ‘weight_vec’ was not declared in this scope; did you mean ‘weight’?
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |                                                ^~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:60: error: ‘v_vec’ was not declared in this scope
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |                                                            ^~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:37: error: there are no arguments to ‘_mm_mul_ps’ that depend on a template parameter, so a declaration of ‘_mm_mul_ps’ must be available [-fpermissive]
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |                                     ^~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:37: note: (if you use ‘-fpermissive’, G++ will accept your code, but allowing the use of an undeclared name is deprecated)
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |                                     ^~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:120:35: error: ‘acc’ was not declared in this scope; did you mean ‘acct’?
+  120 |             _mm_store_ps(out_ptr, acc);
+      |                                   ^~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:120:13: error: there are no arguments to ‘_mm_store_ps’ that depend on a template parameter, so a declaration of ‘_mm_store_ps’ must be available [-fpermissive]
+  120 |             _mm_store_ps(out_ptr, acc);
+      |             ^~~~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp: In function ‘bool mllm::cpu::paged_attn::fwd_bshd_fp32_fastexp(int32_t, int32_t, int32_t, int32_t, int32_t, int32_t, const mllm_fp32_t*, const mllm_fp32_t*, const mllm_fp32_t*, mllm::mllm_fp32_t*, mllm::mllm_fp32_t*, const mllm_int32_t*, const mllm_fp32_t*, bool, int32_t)’:
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:84:13: error: ‘__m128’ was not declared in this scope
+   84 |             __m128 acc = _mm_setzero_ps();
+      |             ^~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:101:22: error: expected ‘;’ before ‘weight_vec’
+  101 |               __m128 weight_vec = _mm_set1_ps(weight);
+      |                      ^~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:102:22: error: expected ‘;’ before ‘v_vec’
+  102 |               __m128 v_vec = _mm_load_ps(v_ptr);
+      |                      ^~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:15: error: ‘acc’ was not declared in this scope; did you mean ‘acct’?
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |               ^~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:48: error: ‘weight_vec’ was not declared in this scope; did you mean ‘weight’?
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |                                                ^~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:60: error: ‘v_vec’ was not declared in this scope
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |                                                            ^~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:103:37: error: there are no arguments to ‘_mm_mul_ps’ that depend on a template parameter, so a declaration of ‘_mm_mul_ps’ must be available [-fpermissive]
+  103 |               acc = _mm_add_ps(acc, _mm_mul_ps(weight_vec, v_vec));
+      |                                     ^~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:120:35: error: ‘acc’ was not declared in this scope; did you mean ‘acct’?
+  120 |             _mm_store_ps(out_ptr, acc);
+      |                                   ^~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:120:13: error: there are no arguments to ‘_mm_store_ps’ that depend on a template parameter, so a declaration of ‘_mm_store_ps’ must be available [-fpermissive]
+  120 |             _mm_store_ps(out_ptr, acc);
+      |             ^~~~~~~~~~~~
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp: In instantiation of ‘bool mllm::cpu::paged_attn::fwd_bshd_fp32_fastexp(int32_t, int32_t, int32_t, int32_t, int32_t, int32_t, const mllm_fp32_t*, const mllm_fp32_t*, const mllm_fp32_t*, mllm::mllm_fp32_t*, mllm::mllm_fp32_t*, const mllm_int32_t*, const mllm_fp32_t*, bool, int32_t) [with __ArchTag = mllm::cpu::paged_attn::details::__ArmArchTag; int32_t = int; mllm::mllm_fp32_t = float; mllm::mllm_int32_t = int]’:
+/root/codes/mllm-v2/mllm/backends/cpu/ops/PagedAttnOp.cpp:43:75:   required from here
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:120:38: error: ‘_mm_store_ps’ was not declared in this scope
+  120 |             _mm_store_ps(out_ptr, acc);
+      |                                      ^
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:158:76: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  158 |       MLLM_AUTO_PARALLEL_FOR_BEGIN_NT(iter, start, end, step, num_threads){__VA_ARGS__} MLLM_AUTO_PARALLEL_FOR_END_NT() \
+      |                                                                            ^~~~~~~~~~~
+/root/codes/mllm-v2/mllm/backends/cpu/kernels/common/paged_attn/fwd_bshd.hpp:120:38: error: ‘_mm_store_ps’ was not declared in this scope
+  120 |             _mm_store_ps(out_ptr, acc);
+      |                                      ^
+/root/codes/mllm-v2/mllm/core/Parallel.hpp:160:53: note: in definition of macro ‘MLLM_CONDITIONAL_PARALLEL_FOR’
+  160 |       MLLM_SERIAL_FOR_BEGIN(iter, start, end, step){__VA_ARGS__} MLLM_SERIAL_FOR_END()                                  \
+      |                                                     ^~~~~~~~~~~
+gmake[3]: *** [mllm/backends/cpu/CMakeFiles/MllmCPUBackend.dir/build.make:513: mllm/backends/cpu/CMakeFiles/MllmCPUBackend.dir/ops/PagedAttnOp.cpp.o] Error 1
+gmake[3]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/Makefile2:1608: mllm/backends/cpu/CMakeFiles/MllmCPUBackend.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:6756: tools/mllm-params-inspector/CMakeFiles/mllm-params-inspector.dir/rule] Error 2
+gmake: *** [Makefile:2218: mllm-params-inspector] Error 2

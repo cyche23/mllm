@@ -1,0 +1,1 @@
+{"backend":"host-sim","bytes_copied":8192,"checksum":1064711031656105847,"iterations":2,"latency_ms":0.000416,"payload_bytes":4096,"result":"ok","run_id":"1773321600919923","scenario":"direct-kv-scaffold","stage":"restore_scaffold_total","task_id":"T001","touch_stride":64}

@@ -1,0 +1,1 @@
+{"supported_backends":[{"description":"CPU-host scaffold backend with no QNN dependency.","name":"host-sim"}],"supported_scenarios":[{"default_payload_bytes":1048576,"description":"Host-side scaffold for a direct KV restore baseline.","name":"direct-kv-scaffold"}],"task_id":"T001"}

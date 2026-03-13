@@ -1,0 +1,84 @@
+[WARN] Skip build enabled; using existing build outputs
+[INFO] Prepare device directory: /data/local/tmp/mllm
+[INFO] RUN: adb shell mkdir -p '/data/local/tmp/mllm'
+[INFO] Push model/config/tokenizer
+[INFO] RUN: adb push qwen3-1.7B-lpbq-sha.bin /data/local/tmp/mllm/
+qwen3-1.7B-lpbq-sha.bin: 1 file pushed. 9.6 MB/s (1618366464 bytes in 160.862s)
+[INFO] RUN: adb push examples/qwen3_qnn_aot/config_1.7B.json /data/local/tmp/mllm/
+examples/qwen3_qnn_aot/config_1.7B.json: 1 file pushed. 0.0 MB/s (864 bytes in 0.124s)
+[INFO] RUN: adb push artifacts/t013/qwen3-tokenizer.json /data/local/tmp/mllm/qwen3-tokenizer.json
+artifacts/t013/qwen3-tokenizer.json: 1 file pushed. 9.2 MB/s (11422654 bytes in 1.186s)
+[INFO] Push QNN runtime libraries
+[INFO] RUN: adb push /opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtp.so /data/local/tmp/mllm/
+/opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtp.so: 1 file pushed. 7.8 MB/s (2516048 bytes in 0.308s)
+[INFO] RUN: adb push /opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpV75Stub.so /data/local/tmp/mllm/
+/opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpV75Stub.so: 1 file pushed. 3.0 MB/s (575384 bytes in 0.182s)
+[INFO] RUN: adb push /opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpPrepare.so /data/local/tmp/mllm/
+/opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpPrepare.so: 1 file pushed. 10.0 MB/s (74225392 bytes in 7.052s)
+[INFO] RUN: adb push /opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpProfilingReader.so /data/local/tmp/mllm/
+/opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpProfilingReader.so: 1 file pushed. 6.3 MB/s (603888 bytes in 0.092s)
+[INFO] RUN: adb push /opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpOptraceProfilingReader.so /data/local/tmp/mllm/
+/opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnHtpOptraceProfilingReader.so: 1 file pushed. 8.1 MB/s (3174592 bytes in 0.375s)
+[INFO] RUN: adb push /opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnSystem.so /data/local/tmp/mllm/
+/opt/qcom/aistack/qairt/2.40.0.251030/lib/aarch64-android/libQnnSystem.so: 1 file pushed. 6.9 MB/s (2590072 bytes in 0.356s)
+[INFO] RUN: adb push /opt/qcom/aistack/qairt/2.40.0.251030/lib/hexagon-v75/unsigned/libQnnHtpV75Skel.so /data/local/tmp/mllm/
+/opt/qcom/aistack/qairt/2.40.0.251030/lib/hexagon-v75/unsigned/libQnnHtpV75Skel.so: 1 file pushed. 7.2 MB/s (9831676 bytes in 1.311s)
+[INFO] Push custom op packages
+[INFO] RUN: adb push /root/codes/mllm-v2/mllm/backends/qnn/custom-op-package/LLaMAPackage/build/aarch64-android/libQnnLLaMAPackage.so /data/local/tmp/mllm/libQnnLLaMAPackage_CPU.so
+/root/codes/mllm-v2/mllm/backends/qnn/custom-op-package/LLaMAPackage/build/aarch64-android/libQnnLLaMAPackage.so: 1 file pushed. 4.7 MB/s (1046080 bytes in 0.214s)
+[INFO] RUN: adb push /root/codes/mllm-v2/mllm/backends/qnn/custom-op-package/LLaMAPackage/build/hexagon-v75/libQnnLLaMAPackage.so /data/local/tmp/mllm/libQnnLLaMAPackage_HTP.so
+/root/codes/mllm-v2/mllm/backends/qnn/custom-op-package/LLaMAPackage/build/hexagon-v75/libQnnLLaMAPackage.so: 1 file pushed. 2.3 MB/s (218808 bytes in 0.092s)
+[INFO] Push mllm runtime libraries and runner
+[INFO] RUN: adb push /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/MllmFFIExtension.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libCustomPackageForHostTest.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmCPUBackend.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmExtOpSet_CPU_FlashAttn2SwaSink.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmExtOpSet_CPU_RadixAttnRelax.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmExtOpSet_CPU_RadixAttnSwaSink.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmQNNBackend.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmRT.so /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmSdkC.so /data/local/tmp/mllm/
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/MllmFFIExtension.so: 1 file pushed. 6.6 MB/s (14363688 bytes in 2.067s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libCustomPackageForHostTest.so: 1 file pushed. 7.5 MB/s (1333632 bytes in 0.169s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmCPUBackend.so: 1 file pushed. 8.7 MB/s (52958992 bytes in 5.810s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmExtOpSet_CPU_FlashAttn2SwaSink.so: 1 file pushed. 5.6 MB/s (1629264 bytes in 0.279s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmExtOpSet_CPU_RadixAttnRelax.so: 1 file pushed. 6.6 MB/s (1592448 bytes in 0.230s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmExtOpSet_CPU_RadixAttnSwaSink.so: 1 file pushed. 6.8 MB/s (1637888 bytes in 0.231s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmQNNBackend.so: 1 file pushed. 9.1 MB/s (27232624 bytes in 2.843s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmRT.so: 1 file pushed. 10.4 MB/s (144556240 bytes in 13.240s)
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/libMllmSdkC.so: 1 file pushed. 9.9 MB/s (11528312 bytes in 1.109s)
+9 files pushed. 9.2 MB/s (256833088 bytes in 26.489s)
+[INFO] RUN: adb push /root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/mllm-qwen3-aot-runner /data/local/tmp/mllm/
+/root/codes/mllm-v2/build-android-arm64-v8a-qnn/bin/mllm-qwen3-aot-runner: 1 file pushed. 8.6 MB/s (3716904 bytes in 0.411s)
+[INFO] RUN: adb push /root/codes/mllm-v2/.qnn_aot_prompt.txt /data/local/tmp/mllm/.prompt.txt
+/root/codes/mllm-v2/.qnn_aot_prompt.txt: 1 file pushed. 0.0 MB/s (39 bytes in 0.063s)
+[INFO] Run AOT runner on device
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNUtils.cpp:25 QNN Backend Lib: libQnnHtp.so
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:47 QNN symbols loaded successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:52 QNN System symbols loaded successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:285 Logging initialized successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:298 Backend created successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:312 Device created successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:373 System interface providers found: 1
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:58 QNN Runtime created successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:66 QNN Backend Build Id: v2.40.0.251030114326_189385
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:68 QNN backend supports tensor sparsity
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:71 QNN backend supports dynamic dimensions
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:81 QNN Perf created successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/Register.cpp:24 QNN context path exists: qwen3-1.7B-lpbq-sha.bin
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:420 Context binary file opened successfully: qwen3-1.7B-lpbq-sha.bin
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:423 Context binary file size: 1543 MB
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:441 System context created successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:453 Context binary info retrieved successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:468 System context freed successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:480 Context created from binary successfully
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNModel.cpp:140 QNNModel::loadGraphTensorInfo() loaded 59 input tensors and 57 output tensors for graph: model.0.s32
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:510 Successfully created QNNModel for graph: model.0.s32
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNModel.cpp:140 QNNModel::loadGraphTensorInfo() loaded 59 input tensors and 57 output tensors for graph: model.0.s1
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:510 Successfully created QNNModel for graph: model.0.s1
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNBackend.cpp:524 QNN context retrieved from qnn_context.bin with 2 QNNModels(QnnGraphs)
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/Register.cpp:28 QNN context loaded successfully from qwen3-1.7B-lpbq-sha.bin
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/Register.cpp:45 QNN memory manager registered
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/base/PluginSystem.cpp:89 Register customized op: DequantizeAdd:4097 -> QNN
+💬 Prompt text (or 'exit/quit'): [1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/aot_rt/PromptProcessor.cpp:129 num_tokens: 21
+MLLM 是一种多模态语言[38;2;000;255;255m
+============== Performance Summary ===============
+[0m[38;2;255;255;255mPrefill time        : [0m[38;2;255;255;000m  57631.00 μs[0m[38;2;255;255;255m (364.39 tokens/s)[0m
+[38;2;255;255;255mDecode time         : [0m[38;2;255;255;000m 216949.00 μs[0m[38;2;255;255;255m ( 36.88 tokens/s)[0m
+[38;2;255;255;255mPrefill tokens      : [0m[38;2;000;128;000m        21
+[0m[38;2;255;255;255mDecode tokens       : [0m[38;2;000;128;000m         8
+[0m
+[1m[38;2;000;128;000m[INFO][0m /root/codes/mllm-v2/mllm/backends/qnn/QNNAllocator.hpp:50 QNNAllocator::shutdown: freeing all allocated memory
+[INFO] AOT E2E finished successfully. Log: /root/codes/mllm-v2/logs/qnn_aot_e2e_20260312_212010.log

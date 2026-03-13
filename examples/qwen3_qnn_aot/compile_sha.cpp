@@ -21,6 +21,10 @@
 using mllm::Argparse;
 
 MLLM_MAIN({
+
+  // 添加这一行启用详细日志
+  mllm::Logger::level() = mllm::LogLevel::kInfo;  // 或 kWarn, kError
+
   auto& help = Argparse::add<bool>("-h|--help").help("Show help message");
   auto& model_path = Argparse::add<std::string>("-m|--model_path").help("Model file path.");
   auto& model_cfg_path = Argparse::add<std::string>("-c|--config").help("Model config file path.");

@@ -1,0 +1,12 @@
+Internal ctest changing into directory: /root/codes/mllm-v2/build-t001-notest/tools/mllm-restore-benchmark
+Test project /root/codes/mllm-v2/build-t001-notest/tools/mllm-restore-benchmark
+    Start 1: mllm-restore-benchmark-smoke
+1/3 Test #1: mllm-restore-benchmark-smoke ........   Passed    0.00 sec
+    Start 2: mllm-restore-benchmark-functional
+2/3 Test #2: mllm-restore-benchmark-functional ...   Passed    0.00 sec
+    Start 3: mllm-restore-benchmark-regression
+3/3 Test #3: mllm-restore-benchmark-regression ...   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   0.01 sec

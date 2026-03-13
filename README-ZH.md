@@ -414,3 +414,10 @@ Apache License 2.0 的完整文本请参阅相关子目录中的 [LICENSE-APACHE
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=UbiquitousLearning/mllm&type=Date" />
  </picture>
 </a>
+
+./scripts/qnn/run_qnn_aot_android_e2e.sh \
+  --context-bin qwen3-1.7B-lpbq-sha.bin \
+  --tokenizer /root/models/Qwen3-1.7B/origin/tokenizer.json \
+  --prompt "你好，请介绍一下 mllm。" \
+  --gen-len 128 \
+  --perf
